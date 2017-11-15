@@ -1,0 +1,30 @@
+<h1>Welcome to Private Event</h1>
+<br>
+<br>
+<% if logged_in? %>
+  <p> A user is logged in </p>
+<% else %>
+  <p> No logged in user </p>
+<% end %>
+<br>
+<h3>Currently logged in user here: </h3>
+<% if logged_in? %>
+  <%= current_user.username %>
+<% end %>
+<br>
+<br>
+<% if logged_in? %>
+  <%= link_to "Log Out", logout_path, method: "delete" %>
+<% else %>
+  <%= link_to "Signup Here", '/signup' %>
+  <br>
+  <br>
+  <p> or </p>
+  <br>
+  <p>Please login here:</p>
+  <%= form_for(:session, url: login_path) do |f| %>
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+    <%= f.submit "log in" %>
+  <% end %>
+<% end %>

@@ -1,0 +1,6 @@
+<h1> Welcome to <%= @user.username %>'s Page! </h1>
+<% if logged_in? %>
+  <p> Current Logged In User: <%= current_user.username %> </p>
+<% end %>
+<br>
+<%= link_to "Home", root_path %>
