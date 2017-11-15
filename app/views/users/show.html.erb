@@ -4,3 +4,13 @@
 <% end %>
 <br>
 <%= link_to "Home", root_path %>
+<br>
+<h3> Here are the events the user has created: </h3>
+
+<% @events.each do |event| %>
+  <ul>
+    <li>Title: <%= event.title %> </li>
+    <li>Details: <%= event.details %> </li>
+    <li>Time: <%= event.date %> </li>
+  </ul>
+<% end %>

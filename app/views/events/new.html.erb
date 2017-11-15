@@ -1,0 +1,15 @@
+<h3> Make a new Event! </h3>
+<% if logged_in? %>
+  <p> Current Logged In User: <%= current_user.username %> </p>
+<% end %>
+<br>
+<br>
+<%= form_for @event do |f| %>
+  <%= f.label :title%>
+  <%= f.text_field :title %>
+  <%= f.label :title%>
+  <%= f.text_field :title %>
+  <%= f.label :date%>
+  <%= f.date_select :date %>
+  <%= f.submit %>
+<% end %>
