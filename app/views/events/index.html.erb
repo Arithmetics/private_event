@@ -1,4 +1,19 @@
-<% @events.each do |event| %>
+<br>
+<br>
+<h3> past_events </h3>
+<% @past_events.each do |event| %>
+  <ul>
+    <li>Title: <%= event.title %> </li>
+    <li>Creator: <%= event.creator.username %></li>
+    <li>Details: <%= event.details %> </li>
+    <li>Time: <%= event.date %> </li>
+  </ul>
+  <br>
+<% end %>
+<br>
+<br>
+<h3> upcoming_events </h3>
+<% @upcoming_events.each do |event| %>
   <ul>
     <li>Title: <%= event.title %> </li>
     <li>Creator: <%= event.creator.username %></li>

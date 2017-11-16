@@ -7,9 +7,15 @@
 <%= form_for @event do |f| %>
   <%= f.label :title%>
   <%= f.text_field :title %>
-  <%= f.label :title%>
-  <%= f.text_field :title %>
+  <br>
+  <br>
+  <%= f.label :details%>
+  <%= f.text_field :details %>
+  <br>
+  <br>
   <%= f.label :date%>
   <%= f.date_select :date %>
+  <br>
+  <br>
   <%= f.submit %>
 <% end %>
