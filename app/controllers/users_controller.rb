@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     @hosted_events = @user.hosted_events.all
     @upcoming_events = @user.upcoming_events
     @previous_events = @user.previous_events
-    @invited_events = @user.invited_events.all
+    @invitations = @user.invitations.all
   end
 
   def index

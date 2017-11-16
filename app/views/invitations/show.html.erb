@@ -1,2 +1,7 @@
-<%= @user.username %>
-<%= @invitaion.invited_event %>
+<h3> This is an invitation for
+<%= @invitation.invited_event.title %> </h3>
+<p> To: <%= @invitation.invitee.username %>  </p>
+<p> From: <%= @invitation.invited_event.creator.username %> sent it to you! </p>
+
+<%= link_to "Accept", accept_invitation_path, :method => :delete %>
+<%= link_to "Reject", reject_invitation_path, :method => :delete %>

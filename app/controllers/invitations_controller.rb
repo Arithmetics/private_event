@@ -1,14 +1,24 @@
 class InvitationsController < ApplicationController
+  before_action :correct_user, only: [:reject, :accept]
 
   def show
-    @user = User.find(params[:user_id])
     @invitation = Invitation.find(params[:id])
   end
 
 
-  def destroy
-    #destroy invitation
-    #create rsvp
+  def reject
+    @invitation.destroy
+    redirect_to current_user
+  end
+
+  def accept
+    @rsvp = Rsvp.new(attendee_id: @invitation.invitee_id, attended_event_id: @invitation.invited_event_id)
+    if @rsvp.save
+      @invitation.destroy
+      redirect_to @rsvp.attended_event
+    else
+      render 'invitation'
+    end
   end
 
 
@@ -33,6 +43,11 @@ private ########################################333
 
   def invitation_params
     params.require(:invitation).permit(:message, :invitee_id, :date)
+  end
+
+  def correct_user
+    @invitation = current_user.invitations.find_by(id: params[:id])
+    redirect_to root_url if @invitation.nil?
   end
 
 end

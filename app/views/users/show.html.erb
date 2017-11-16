@@ -46,14 +46,14 @@
 
 <br>
 <br>
-<h3> Here are the events the user is invited to: (<%= @invited_events.count %>)</h3>
-<% @invited_events.each do |event| %>
+<h3> Here are the events the user is invited to: (<%= @user.invitations.count %>)</h3>
+<% @invitations.each do |invitation| %>
   <ul>
-    <li><%= link_to "See Event", event %></li>
-    <li>Title: <%= event.title %> </li>
-    <li>Host: <%= event.creator.username %> </li>
-    <li>Details: <%= event.details %> </li>
-    <li>Time: <%= event.date %> </li>
+    <li><%= link_to "See Invitation", invitation %></li>
+    <li>Title: <%= invitation.invited_event.title %> </li>
+    <li>Host: <%= invitation.invited_event.creator.username %> </li>
+    <li>Details: <%= invitation.invited_event.details %> </li>
+    <li>Time: <%= invitation.invited_event.date %> </li>
   </ul>
 
 <% end %>

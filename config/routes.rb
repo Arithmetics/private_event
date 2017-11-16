@@ -8,13 +8,16 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   resources :users do
-    resources :invitations 
+    resources :invitations
   end
 
   resources :events do
     resources :invitations
   end
 
-  resources :invitations
+  resources :invitations do
+    delete :reject, on: :member
+    delete :accept, on: :member
+  end
 
 end
