@@ -1,7 +1,34 @@
-
+<% if logged_in? %>
+  <p> Current Logged In User: <%= current_user.username %> </p>
+<% end %>
 <ul>
   <li>Title: <%= @event.title %> </li>
   <li>Host: <%= @event.creator.username %> </li>
   <li>Details: <%= @event.details %> </li>
   <li>Time: <%= @event.date %> </li>
+</ul>
+
+<% if current_user_owns_event?(@event) %>
+ <%= link_to "Invite someone to this event", new_event_invitation_path(@event) %>
+<% end %>
+
+<% if current_user_invited_to_event?(@event) %>
+  <h3> You have been invited to this event! </h3>
+  <%= link_to "Review Invitation", user_invitation_path(@event) %>
+<% end %>
+
+
+<h3> Here are the people coming: </h3>
+<ul>
+  <% @attendees.each do |attendee| %>
+    <li><%= link_to attendee.username, attendee %></li>
+  <% end %>
+</ul>
+
+<h3> Here are the people invited: </h3>
+<ul>
+  <% @invitees.each do |invitee| %>
+    <li><%= link_to invitee.username, invitee %></li>
+  <% end %>
+
 </ul>

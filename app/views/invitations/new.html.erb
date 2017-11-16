@@ -1,0 +1,14 @@
+<h3> New Invitation for <%= @event.title %>
+<br>
+<br>
+<%= form_for ([@event, @invitation]) do |f| %>
+  <%= f.label :message %>
+  <%= f.text_field :message %>
+  <br>
+  <br>
+  <%= f.label :username %>
+  <%= f.collection_select :invitee_id, User.order(:username), :id, :username %>
+  <br>
+  <br>
+  <%= f.submit "Submit" %>
+<% end %>
