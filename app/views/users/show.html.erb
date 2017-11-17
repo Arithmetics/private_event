@@ -46,14 +46,17 @@
 
 <br>
 <br>
-<h3> Here are the events the user is invited to: (<%= @user.invitations.count %>)</h3>
-<% @invitations.each do |invitation| %>
-  <ul>
-    <li><%= link_to "See Invitation", invitation %></li>
-    <li>Title: <%= invitation.invited_event.title %> </li>
-    <li>Host: <%= invitation.invited_event.creator.username %> </li>
-    <li>Details: <%= invitation.invited_event.details %> </li>
-    <li>Time: <%= invitation.invited_event.date %> </li>
-  </ul>
+<% if current_user == @user %>
+  <h3> Here are the events the user is invited to: (<%= @user.invitations.count %>)</h3>
+  <% @invitations.each do |invitation| %>
+    <ul>
+      <li><%= link_to "See Invitation", invitation %></li>
+      <li>Title: <%= invitation.invited_event.title %> </li>
+      <li>Host: <%= invitation.invited_event.creator.username %> </li>
+      <li>Details: <%= invitation.invited_event.details %> </li>
+      <li>Time: <%= invitation.invited_event.date %> </li>
 
+    </ul>
+
+  <% end %>
 <% end %>
